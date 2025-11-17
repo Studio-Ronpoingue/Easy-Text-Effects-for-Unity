@@ -37,6 +37,11 @@ namespace EasyTextEffects
             effect.StartEffect(this);
         }
 
+        public void StopEffect()
+        {
+            effect.StopEffect();
+        }
+
         internal void InvokeCompleted()
         {
             onEffectCompleted?.Invoke();
