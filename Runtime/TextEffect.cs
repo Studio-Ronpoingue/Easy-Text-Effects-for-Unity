@@ -302,9 +302,14 @@ namespace EasyTextEffects
             manualTagEffects_.ForEach(_entry => _entry.effect.StopEffect());
         }
 
-        public GlobalTextEffectEntry FindManualEffect(string _effectName)
+        public GlobalTextEffectEntry FindManualGlobalEffect(string _effectName)
         {
             return manualEffects_.Find(_entry => _entry.effect.effectTag == _effectName);
+        }
+
+        public TextEffectEntry FindManualTagEffect(string _effectName)
+        {
+            return manualTagEffects_.Find(_entry => _entry.effect.effectTag == _effectName);
         }
 
         public void StartManualEffect(string _effectName)
@@ -329,7 +334,16 @@ namespace EasyTextEffects
             }
             else
             {
-                Debug.LogWarning($"Effect {_effectName} not found. Available effects: {string.Join(", ", manualEffects_.Select(_entry => _entry.effect.effectTag).ToList())}");
+                Debug.LogWarning($"Effect {_effectName} not found. Available effects: {string.Join(", ", manualTagEffects_.Select(_entry => _entry.effect.effectTag).ToList())}");
+            }
+        }
+
+        public void StopManualTagEffect(string _effectName)
+        {
+            TextEffectEntry effectEntry = manualTagEffects_.Find(_entry => _entry.effect.effectTag == _effectName);
+            if (effectEntry != null)
+            {
+                effectEntry.StopEffect();
             }
         }
 
