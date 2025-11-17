@@ -251,6 +251,7 @@ namespace EasyTextEffects
             {
                 TMP_MeshInfo meshInfo = textInfo.meshInfo[i];
 
+                meshInfo.ClearUnusedVertices();
                 meshInfo.mesh.colors32 = meshInfo.colors32;
                 meshInfo.mesh.vertices = meshInfo.vertices;
 
